@@ -1,50 +1,31 @@
-# 🛒 eCommerce App — Domain Layer Refactoring
+# 🛒 eCommerce App — Clean Architecture (Flutter)
 
-## 📌 Overview
-
-This project focuses on refactoring the **Domain Layer** of an eCommerce application using principles of **Clean Architecture**.
-
-The main goal of this task was to separate the application's business logic from the presentation and data concerns by introducing a dedicated **Domain Layer** containing:
-
-* A `Product` entity
-* A reusable `UseCase` base class
-* Callable use case classes
-* Product CRUD operations
-
-The implemented domain functionality supports:
-
-* Viewing all products
-* Viewing a specific product
-* Creating a new product
-* Updating an existing product
-* Deleting a product
+A scalable Flutter application built using **Clean Architecture** principles to separate business logic, data management, and UI presentation.
 
 ---
 
-## 🎯 Learning Objectives
+## 🏗️ Architecture & Data Flow
 
-Through this task, I practiced and implemented:
-
-* Domain-driven application structure
-* Entity design
-* Use Case design
-* Callable classes in Dart
-* Separation of concerns
-* Repository abstraction
-* CRUD business operations
-* Clean Architecture principles
-* Organizing business logic independently from the UI
-
----
-
-# 🏗️ Domain Layer
-
-The Domain Layer contains the application's core business logic.
-
-The main structure is:
+Data moves through a strict one-way flow across three layers:
 
 ```text
+PRESENTATION LAYER (UI Widgets & State Management)
+       │
+       ▼
+  DOMAIN LAYER (Business Logic: Entities, Use Cases, Repository Contracts)
+       │
+       ▼
+   DATA LAYER (Data Sources, Models, Repository Implementations)
+🎨 Presentation Layer: The UI listens to state changes and triggers Use Cases upon user interaction.
+
+🧠 Domain Layer: Executes core business rules. It contains pure Dart entities and repository contracts, independent of external frameworks.
+
+🗄️ Data Layer: Fetches raw JSON from remote APIs or local storage, parses it into ProductModel (Data Transfer Object), and converts it into domain Product entities.
+
+📂 Project Directory Structure
+Plaintext
 lib/
+<<<<<<< HEAD
 └── domain/
     ├── entities/
     │   └── product.dart
@@ -557,3 +538,81 @@ This implementation satisfies the required Domain Layer refactoring:
 **Abel Tadesse**
 
 Flutter Developer — Learning and Building with Dart, Flutter, Clean Architecture, and TDD.
+=======
+├── core/                        # Shared utilities, exceptions, & network info
+└── features/
+    └── product/                 # Main eCommerce Product Feature
+        ├── domain/              # Pure Business Rules
+        │   ├── entities/        # Core Data Structures (Product)
+        │   ├── repositories/    # Abstract Repository Contracts
+        │   └── usecases/        # Business Operations (CRUD)
+        ├── data/                # Data Fetching & Serialization
+        │   ├── models/          # DTOs with JSON Serialization (ProductModel)
+        │   ├── datasources/     # Remote & Local Data Sources
+        │   └── repositories/    # Concrete Repository Implementations
+        └── presentation/        # UI Screens, Widgets, & State Management
+📋 Task Log
+🔹 Task 9: Domain Layer Refactoring
+Objective: Isolate core business rules from UI and external dependencies.
+
+Key Implementations:
+
+Created the core Product entity with properties (id, name, description, imageUrl, price).
+
+Defined abstract ProductRepository contract with CRUD methods.
+
+Implemented callable Use Cases:
+
+ViewAllProductsUsecase 📦
+
+ViewProductUsecase 🔍
+
+CreateProductUsecase ➕
+
+UpdateProductUsecase 🔄
+
+DeleteProductUsecase 🗑️
+
+🔹 Task 10: Data Overview Layer & Models
+Objective: Establish directory structure, DTOs, JSON parsing, and unit testing.
+
+Key Implementations:
+
+Restructured project under core/ and features/product/.
+
+Built ProductModel extending Product entity.
+
+Implemented factory ProductModel.fromJson() and Map<String, dynamic> toJson() for JSON serialization.
+
+Wrote unit tests in test/features/product/data/models/product_model_test.dart to verify serialization accuracy.
+🛠️ Setup & Execution
+Clone the repository:
+
+Bash
+git clone <repository-url>
+Fetch dependencies:
+
+Bash
+flutter pub get
+Run static code analysis:
+
+Bash
+flutter analyze
+Run unit tests:
+
+Bash
+flutter test
+👨‍💻 Author
+Abel Tadesse
+
+Flutter Developer — Building clean, maintainable, and test-driven mobile applications.
+
+
+---
+
+### 💡 Next Step
+
+Try pasting this into your `README.md` file and opening the preview with `Ctrl` + `Shift` + `V`. 
+
+How does the preview look in VS Code? Are there any specific sections or details you would like to add or adjust?
+>>>>>>> 67579bf (update Readme by adding Data flow concept)
