@@ -33,8 +33,7 @@ Ensure your local environment meets the following requirements:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com
-   cd your-repo-name
+ git clone https://github.com/Abel-et/2026-project-phase-mobile-tasks/tree/main/Task_7e
    ```
 
 2. **Fetch project dependencies:**
