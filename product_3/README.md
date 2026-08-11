@@ -557,27 +557,3 @@ This implementation satisfies the required Domain Layer refactoring:
 **Abel Tadesse**
 
 Flutter Developer — Learning and Building with Dart, Flutter, Clean Architecture, and TDD.
-
- # 🛍️ eCommerce App - Clean Architecture
-This Flutter project is built using **Clean Architecture** principles to ensure scalable, maintainable, and testable code.
-
----
-
-## 📂 Project Structure
-
-The project is organized into layers following Clean Architecture:
-
-```text
-lib/
-├── core/                        # Shared utilities, errors, and network info
-└── features/
-    └── product/                 # Main eCommerce Product Feature
-        ├── domain/              # Pure business rules & entities
-        │   ├── entities/        # Core data structures (e.g., Product)
-        │   ├── repositories/    # Abstract repository contracts
-        │   └── usecases/        # Business logic operations (CRUD)
-        ├── data/                # Data fetching & handling
-        │   ├── models/          # Data Transfer Objects with JSON serialization (ProductModel)
-        │   ├── datasources/     # Remote API & Local Database calls
-        │   └── repositories/    # Concrete implementation of domain repositories
-        └── presentation/        # UI Widgets, Screens, & State Management (BLoC/Provider)
