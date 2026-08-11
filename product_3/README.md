@@ -90,8 +90,8 @@ Additional tasks and features will be added here as the project progresses.
 ## 🚀 Setup
 
 ```bash
-git clone <repository-url>
-cd <project-folder>
+git clonehttps://github.com/Abel-et/2026-project-phase-mobile-tasks
+cd product_3
 flutter pub get
 flutter run
 ```
