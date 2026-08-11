@@ -1,4 +1,4 @@
-import '../repositories/productRepository.dart';
+import '../repositories/product_repository.dart';
 
 class DeleteProduct {
   final ProductRepository repository;

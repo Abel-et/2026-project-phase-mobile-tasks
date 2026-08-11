@@ -1,5 +1,5 @@
 import '../entities/product.dart';
-import '../repositories/productRepository.dart';
+import '../repositories/product_repository.dart';
 
 class UpdateProduct {
   final ProductRepository repository;

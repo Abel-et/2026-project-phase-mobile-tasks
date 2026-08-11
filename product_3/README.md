@@ -70,6 +70,38 @@ The **Domain Layer** contains the business rules and repository contracts, while
 * Structured the Data Layer
 * Added unit tests for `ProductModel`
 
+
+### 🔹 Task 11: Contracts of Data Sources
+
+**Objective:** Refactor the Ecommerce app using Clean Architecture by introducing repository and data-source contracts.
+
+**Implemented:**
+
+* Created `ProductRepository` contract in the Domain layer.
+* Created `ProductRemoteDataSource` and `ProductLocalDataSource` abstract contracts.
+* Created `NetworkInfo` contract for checking network connectivity.
+* Implemented `ProductRepositoryImpl` with constructor-injected dependencies for remote data source, local data source, and network information.
+* Added remote/local data handling with local-cache fallback when the network is unavailable.
+
+**Architecture:**
+
+```text
+Domain
+  └── ProductRepository (Contract)
+           ▲
+           │
+Data
+  ├── ProductRepositoryImpl
+  ├── ProductRemoteDataSource
+  ├── ProductLocalDataSource
+  
+```
+
+**Verification:**
+
+* Ran `flutter analyze` successfully.
+
+
 ### 🔜 Future Tasks
 
 Additional tasks and features will be added here as the project progresses.
