@@ -165,6 +165,74 @@ Remote failure → falls back to cached local products.
 
 All 4 tests passed successfully with flutter test.
 
+## 🔹 Task 14: Implement Local Data Source
+
+# 🎯 Objective
+
+Implement a real local data source for the eCommerce application using **SharedPreferences**.
+
+The local data source allows the application to store cached products locally and retrieve them when the device is offline.
+
+### 🏗️ Implementation
+
+Implemented `ProductLocalDataSourceImpl` based on the `ProductLocalDataSource` contract.
+
+The implementation:
+
+- Added `shared_preferences` to the project.
+- Uses `SharedPreferences` for local product storage.
+- Converts `ProductModel` objects to JSON before storing them.
+- Converts stored JSON back into `ProductModel` objects when retrieving products.
+- Returns cached products when available.
+- Returns an empty list when no products have been cached.
+- Uses dependency injection by receiving `SharedPreferences` through the constructor.
+
+### 🔄 Local Data Source Flow
+
+```text
+              ProductRepository
+                     │
+                     ▼
+          ProductLocalDataSource  
+                 (Contract)
+                     │
+                     ▼
+       ProductLocalDataSourceImpl
+                     │
+                     ▼
+             SharedPreferences
+                     │
+              ┌──────┴──────┐
+              │             │
+           Save           Read
+              │             │
+              ▼             ▼
+       ProductModel       JSON
+              │             │
+           toJson()    fromJson()
+              │             │
+              ▼             ▼
+          JSON String → ProductModel
+
+🧪 Testing
+
+Implemented unit tests for the local data source:
+
+Cache Products
+Verifies that products can be stored in SharedPreferences.
+Retrieve Cached Products
+Verifies that cached products can be retrieved and converted back into ProductModel objects.
+No Cached Products
+Verifies that an empty list is returned when no products are stored.
+🧪 Test Result
+
+Run:
+
+flutter test
+
+Result:
+
+00:03 +7: All tests passed!
 ## 🛠️ Technologies
 
 * Flutter
