@@ -114,21 +114,46 @@ Used the local data source when the network is unavailable.
 Cached successfully retrieved remote products locally.
 Added a local-cache fallback when the remote data source fails.
 Repository Flow
-                 ProductRepositoryImpl
-                          │
-                          ▼
-                    NetworkInfo
-                     /        \
-                  Online      Offline
-                    │            │
-                    ▼            ▼
-                 Remote        Local
-                    │            │
-                    ▼            │
-                  Cache ◄────────┘
-                    │
-                    ▼
-                 Products
+### 🏗️ Repository Architecture
+
+The `ProductRepositoryImpl` connects the **Domain Layer** with the **Remote and Local Data Sources**.
+
+```text
+                    DOMAIN LAYER
+                         │
+                         ▼
+              ProductRepository
+                    (Contract)
+                         │
+                         ▼
+                     DATA LAYER
+                         │
+                         ▼
+              ProductRepositoryImpl
+                         │
+          ┌──────────────┼──────────────┐
+          │              │              │
+          ▼              ▼              ▼
+    NetworkInfo     RemoteDataSource  LocalDataSource
+          │              │              │
+          ▼              │              │
+   Network Status        │              │
+          │              │              │
+      ┌───┴───┐          │              │
+      │       │          │              │
+    Online  Offline      │              │
+      │       │          │              │
+      ▼       ▼          ▼              ▼
+   Remote    Local    Get Products   Get Cache
+      │       │          │              │
+      │       │          ▼              │
+      │       │       Cache Data        │
+      │       │          │              │
+      └───────┴──────────┴──────────────┘
+                         │
+                         ▼
+                   Product List
+              ```
 Testing
 
 Implemented unit tests for:
