@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import '../lib/core/error/product_server_error.dart';
 import '../lib/core/network/network_info.dart';
-import '../lib/features/product/data/datasources/localDataSource/product_local_data_source.dart';
-import '../lib/features/product/data/datasources/product_remote_data_source.dart';
+import '../lib/features/product/data/datasources/local/product_local_data_source.dart';
+import '../lib/features/product/data/datasources/remote/product_remote_data_source.dart';
 import '../lib/features/product/data/models/product_model.dart';
 import '../lib/features/product/data/repositories/product_repository_impl.dart';
 class FakeNetworkInfo implements NetworkInfo{
@@ -26,7 +26,7 @@ class FakeRemoteDataSource implements ProductRemoteDataSource {
   }
 
   @override
-  Future<ProductModel> getProduct(int id) async {
+  Future<ProductModel> getProduct(String id) async {
     return products.firstWhere(
       (product) => product.id == id,
     );
@@ -58,7 +58,7 @@ class FakeRemoteDataSource implements ProductRemoteDataSource {
   }
 
   @override
-  Future<void> deleteProduct(int id) async {
+  Future<void> deleteProduct(String id) async {
     products.removeWhere(
       (product) => product.id == id,
     );
@@ -88,7 +88,7 @@ class FakeLocalDataSource implements ProductLocalDataSource {
 }
 
 final testProduct = ProductModel( 
-  id:1,
+  id:'1',
   description: 'description',
   name:'name',
   imageUrl: 'imageurl',

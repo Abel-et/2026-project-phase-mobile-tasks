@@ -1,8 +1,8 @@
 import '../../../../core/network/network_info.dart';
 import '../../domain/entities/product.dart';
 import '../../domain/repositories/product_repository.dart';
-import '../datasources/localDataSource/product_local_data_source.dart';
-import '../datasources/product_remote_data_source.dart';
+import '../datasources/local/product_local_data_source.dart';
+import '../datasources/remote/product_remote_data_source.dart';
 import '../models/product_model.dart';
 
 class ProductRepositoryImpl  implements ProductRepository{
@@ -36,7 +36,7 @@ class ProductRepositoryImpl  implements ProductRepository{
   }
 
   @override
-  Future<Product> getProduct(int id) async {
+  Future<Product> getProduct(String id) async {
     if( await networkInfo.isConnected){
       return await remoteDataSource.getProduct(id);}
       else{
@@ -84,7 +84,7 @@ class ProductRepositoryImpl  implements ProductRepository{
   }
 
   @override
-  Future <void> deleteProduct(int id ) async{
+  Future <void> deleteProduct(String id ) async{
     if (await networkInfo.isConnected){
       await remoteDataSource.deleteProduct(id);
     }else{

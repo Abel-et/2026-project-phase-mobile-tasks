@@ -12,7 +12,7 @@ class ProductModel extends Product {
   // factory constructor to convert json => productModels
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
-      id: json['id'] as int,
+      id: json['id'] as String,
       description: json['description'] as String,
       name: json['name'] as String,
       imageUrl: json['imageUrl'] as String,

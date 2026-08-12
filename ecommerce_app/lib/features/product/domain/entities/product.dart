@@ -1,7 +1,7 @@
 
 // In eCommerce the Product is one of the Actor
 class Product {
-  final int id;
+  final String id;
   final String name;
   final String description ;
   final String imageUrl ;

@@ -7,7 +7,7 @@ class GetProduct {
 
   GetProduct(this.repository);
 
-  Future<Product> call(int id) async{
+  Future<Product> call(String id) async{
     return await repository.getProduct(id);
   }
 

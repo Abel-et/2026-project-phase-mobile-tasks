@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:ecommerce_clean_architecture/features/product/data/datasources/localDataSource/product_local_data_source_impl.dart';
+import 'package:ecommerce_clean_architecture/features/product/data/datasources/local/product_local_data_source_impl.dart';
 import 'package:ecommerce_clean_architecture/features/product/data/models/product_model.dart';
 
 
@@ -10,7 +10,7 @@ void main(){
   late ProductLocalDataSourceImpl localDataSource;
 
    final testProduct = ProductModel(
-    id: 1,
+    id: '1',
     description: 'description',
     name: 'name',
     imageUrl: 'imageUrl',

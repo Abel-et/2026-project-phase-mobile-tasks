@@ -1,4 +1,4 @@
-import '../../features/product/data/datasources/product_remote_data_source.dart';
+import '../../features/product/data/datasources/remote/product_remote_data_source.dart';
 import '../../features/product/data/models/product_model.dart';
 class FailingRemoteDataSource
     implements ProductRemoteDataSource {
@@ -9,7 +9,7 @@ class FailingRemoteDataSource
   }
 
   @override
-  Future<ProductModel> getProduct(int id) async {
+  Future<ProductModel> getProduct(String id) async {
     throw Exception('Server error');
   }
 
@@ -28,7 +28,7 @@ class FailingRemoteDataSource
   }
 
   @override
-  Future<void> deleteProduct(int id) async {
+  Future<void> deleteProduct(String id) async {
     throw Exception('Server error');
   }
 }

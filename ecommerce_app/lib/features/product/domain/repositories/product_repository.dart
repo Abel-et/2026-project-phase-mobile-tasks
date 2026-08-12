@@ -5,11 +5,11 @@ abstract class ProductRepository {
   Future <List<Product>> getAllProducts();
 
   //  a method to fetch a single product
-  Future<Product> getProduct(int id);
+  Future<Product> getProduct(String id);
 
   // to Edit Product
   Future<void> updateProduct(Product product);
 
   // to delete Product 
-  Future<void> deleteProduct(int id);
+  Future<void> deleteProduct(String id);
 }
